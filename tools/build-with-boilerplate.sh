@@ -22,12 +22,18 @@ cp "$work/sce_sys/pic0.dds" "$work/psp5-sce-sys/pic0.dds"
 cp "$work/sce_sys/pic1.dds" "$work/psp5-sce-sys/pic1.dds"
 cp "$work/sce_sys/snd0.at9" "$work/psp5-sce-sys/snd0.at9"
 
-make -C "$work" APP_SOURCE_DIR=psp5-src APP_PARAM=psp5-sce-sys/param.json APP_SCE_SYS=psp5-sce-sys APP_ASSETS=
+make -C "$work" packages APP_SOURCE_DIR=psp5-src APP_PARAM=psp5-sce-sys/param.json APP_SCE_SYS=psp5-sce-sys APP_ASSETS=
 
 rm -rf "$root/build/ps5/PPSA99555"
 mkdir -p "$root/build/ps5"
 cp -a "$work/dist/PPSA99555" "$root/build/ps5/PPSA99555"
 # Current boilerplate emits the installable title as a ZIP, not .ffpkg.
 cp "$work/dist/PPSA99555.zip" "$root/build/ps5/PPSA99555.zip"
+for ext in ffpkg ffpfsc; do
+  if [[ -s "$work/dist/PPSA99555.$ext" ]]; then
+    cp "$work/dist/PPSA99555.$ext" "$root/build/ps5/PPSA99555.$ext"
+  fi
+done
 echo "PSP5 native title folder: $root/build/ps5/PPSA99555"
-echo "PSP5 packaged title: $root/build/ps5/PPSA99555.zip"
+echo "PSP5 packaged outputs:"
+ls -lh "$root/build/ps5"/PPSA99555*
