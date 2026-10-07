@@ -28,4 +28,6 @@ make -C "$work"   APP_SOURCE_DIR=psp5-src   APP_PARAM=psp5-sce-sys/param.json   
 rm -rf "$root/build/ps5/PPSA99555"
 mkdir -p "$root/build/ps5"
 cp -a "$work/dist/PPSA99555" "$root/build/ps5/PPSA99555"
+cp "$work/dist/PPSA99555.ffpkg" "$root/build/ps5/PPSA99555.ffpkg"
 echo "PSP5 native title folder: $root/build/ps5/PPSA99555"
+echo "PSP5 UFS image: $root/build/ps5/PPSA99555.ffpkg"
