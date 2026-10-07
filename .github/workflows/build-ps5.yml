@@ -24,12 +24,19 @@ jobs:
           test -f build/ps5/PPSA99555/eboot.bin
           test -f build/ps5/PPSA99555/sce_module/libc.prx
           test -f build/ps5/PPSA99555/sce_sys/param.json
+          test -s build/ps5/PPSA99555.ffpkg
       - name: Archive title folder
         run: |
           cd build/ps5
           zip -r ../../PSP5-PPSA99555.zip PPSA99555
+          cp PPSA99555.ffpkg ../../PSP5-PPSA99555.ffpkg
       - uses: actions/upload-artifact@v4
         with:
-          name: PSP5-PPSA99555
+          name: PSP5-PPSA99555-Folder
           path: PSP5-PPSA99555.zip
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSP5-PPSA99555-FFPKG
+          path: PSP5-PPSA99555.ffpkg
           retention-days: 7
