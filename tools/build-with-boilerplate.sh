@@ -14,6 +14,8 @@ git -C "$work" checkout --detach "$commit"
 rm -rf "$work/psp5-src" "$work/psp5-sce-sys"
 mkdir -p "$work/psp5-src" "$work/psp5-sce-sys"
 cp "$root/ps5/src/main.cpp" "$work/psp5-src/main.cpp"
+cp "$work/src/demo_renderer.cpp" "$work/psp5-src/demo_renderer.cpp"
+cp "$work/src/demo_renderer.hpp" "$work/psp5-src/demo_renderer.hpp"
 cp "$root/ps5/sce_sys/param.json" "$work/psp5-sce-sys/param.json"
 # Until PSP5 has final branded artwork, reuse the boilerplate's known-good required PS5 assets.
 cp "$work/sce_sys/icon0.png" "$work/psp5-sce-sys/icon0.png"
