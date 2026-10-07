@@ -19,24 +19,16 @@ jobs:
           sudo apt-get install -y git make ninja-build ccache pkg-config python3 python3-pip python3-venv tar wget unzip clang-18 lld-18
       - name: Build native PS5 title
         run: bash tools/build-with-boilerplate.sh
-      - name: Validate title folder
+      - name: Validate title output
         run: |
           test -f build/ps5/PPSA99555/eboot.bin
           test -f build/ps5/PPSA99555/sce_module/libc.prx
           test -f build/ps5/PPSA99555/sce_sys/param.json
-          test -s build/ps5/PPSA99555.ffpkg
-      - name: Archive title folder
-        run: |
-          cd build/ps5
-          zip -r ../../PSP5-PPSA99555.zip PPSA99555
-          cp PPSA99555.ffpkg ../../PSP5-PPSA99555.ffpkg
+          test -s build/ps5/PPSA99555.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: PSP5-PPSA99555-Folder
-          path: PSP5-PPSA99555.zip
-          retention-days: 7
-      - uses: actions/upload-artifact@v4
-        with:
-          name: PSP5-PPSA99555-FFPKG
-          path: PSP5-PPSA99555.ffpkg
+          name: PSP5-PPSA99555
+          path: |
+            build/ps5/PPSA99555/
+            build/ps5/PPSA99555.zip
           retention-days: 7
