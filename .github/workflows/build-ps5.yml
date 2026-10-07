@@ -1,0 +1,35 @@
+name: Build PSP5 PS5
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install host tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git make ninja-build ccache pkg-config python3 python3-pip python3-venv tar wget unzip clang-18 lld-18
+      - name: Build native PS5 title
+        run: bash tools/build-with-boilerplate.sh
+      - name: Validate title folder
+        run: |
+          test -f build/ps5/PPSA99555/eboot.bin
+          test -f build/ps5/PPSA99555/sce_module/libc.prx
+          test -f build/ps5/PPSA99555/sce_sys/param.json
+      - name: Archive title folder
+        run: |
+          cd build/ps5
+          zip -r ../../PSP5-PPSA99555.zip PPSA99555
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PSP5-PPSA99555
+          path: PSP5-PPSA99555.zip
+          retention-days: 7
