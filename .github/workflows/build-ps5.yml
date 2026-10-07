@@ -21,10 +21,14 @@ jobs:
         run: bash tools/build-with-boilerplate.sh
       - name: Validate title output
         run: |
-          test -f build/ps5/PPSA99555/eboot.bin
+          test -f build/ps5/PPSA99555/eboot.elf
           test -f build/ps5/PPSA99555/sce_module/libc.prx
           test -f build/ps5/PPSA99555/sce_sys/param.json
           test -s build/ps5/PPSA99555.zip
+            build/ps5/PPSA99555.ffpkg
+            build/ps5/PPSA99555.ffpfsc
+          test -s build/ps5/PPSA99555.ffpkg
+          test -s build/ps5/PPSA99555.ffpfsc
       - uses: actions/upload-artifact@v4
         with:
           name: PSP5-PPSA99555
