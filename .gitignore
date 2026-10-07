@@ -1,0 +1,13 @@
+build/
+out/
+.vscode/
+.idea/
+*.iso
+*.cso
+*.pbp
+*.elf
+*.prx
+*.pkg
+*.self
+*.log
+.DS_Store
