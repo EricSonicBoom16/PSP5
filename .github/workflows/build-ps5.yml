@@ -21,7 +21,7 @@ jobs:
         run: bash tools/build-with-boilerplate.sh
       - name: Validate title output
         run: |
-          test -f build/ps5/PPSA99555/eboot.elf
+          test -f build/ps5/PPSA99555/eboot.bin
           test -f build/ps5/PPSA99555/sce_module/libc.prx
           test -f build/ps5/PPSA99555/sce_sys/param.json
           test -s build/ps5/PPSA99555.zip
