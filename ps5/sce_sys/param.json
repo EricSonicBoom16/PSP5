@@ -1,5 +1,7 @@
 {
-  "ageLevel": { "default": 0 },
+  "ageLevel": {
+    "default": 0
+  },
   "applicationCategoryType": 0,
   "applicationDrmType": "free",
   "attribute": 0,
@@ -7,15 +9,21 @@
   "attribute3": 524352,
   "conceptId": "99555",
   "contentBadgeType": 1,
-  "contentId": "UP9000-PPSA99555_00-PSP5GCModz000001",
+  "contentId": "UP9000-PPSA99555_00-PSP5GCMODZ000001",
   "contentVersion": "01.000.000",
   "downloadDataSize": 64,
   "gameIntent": {
-    "permittedIntents": [ { "intentType": "launchActivity" } ]
+    "permittedIntents": [
+      {
+        "intentType": "launchActivity"
+      }
+    ]
   },
   "localizedParameters": {
     "defaultLanguage": "en-US",
-    "en-US": { "titleName": "PSP5" }
+    "en-US": {
+      "titleName": "PSP5"
+    }
   },
   "masterVersion": "01.00",
   "pubtools": {
